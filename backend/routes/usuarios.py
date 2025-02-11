@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from database import get_db
-from models import Usuario
+from backend.database import get_db
+from backend.models import Usuario
 from pydantic import BaseModel
 from passlib.context import CryptContext
 from jose import JWTError, jwt
@@ -18,7 +18,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/usuarios/login")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # Configurações do JWT
-SECRET_KEY = "chave_secreta_super_segura"  # Substitua por uma chave segura
+SECRET_KEY = "chave_secreta_super_segura"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 

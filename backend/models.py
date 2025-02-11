@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, JSON
-from database import Base
+from backend.database import Base
 
 # Modelo para a tabela de rotas
 class Rota(Base):

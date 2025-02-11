@@ -27,7 +27,7 @@ uvicorn backend.app:app --reload
 
 5️⃣ Acesse a API no navegador
 Swagger UI: http://127.0.0.1:8000/docs
-API Root: http://127.0.0.1:8000/
+Abra o arquivo login.html
 
 📌 Funcionalidades
 ✅ Exibição de rotas e paradas de ônibus em um mapa interativo.
