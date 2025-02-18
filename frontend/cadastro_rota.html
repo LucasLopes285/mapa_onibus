@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Nova Rota</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Leaflet Draw CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cadastro-container">
+        <h1>Cadastrar Nova Rota de Ônibus</h1>
+
+        <!-- Mapa interativo -->
+        <div id="map"></div>
+
+        <!-- Formulário para nome do ônibus -->
+        <form id="rotaForm">
+            <label for="nomeOnibus">Nome do Ônibus:</label>
+            <input type="text" id="nomeOnibus" required>
+
+            <!-- Botão para salvar a rota -->
+            <button type="submit">Salvar Rota</button>
+        </form>
+
+        <!-- Botão para voltar ao painel administrativo -->
+        <button onclick="window.location.href='admin.html'" class="back-btn">Voltar ao Painel Administrativo</button>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Leaflet Draw JS -->
+    <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+    <!-- Script do cadastro da rota -->
+    <script src="cadastro_rota.js"></script>
+</body>
+</html>
