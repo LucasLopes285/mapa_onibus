@@ -4,20 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa Interativo de Ônibus</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 </head>
 <body>
-    <h1>Mapa Interativo de Ônibus</h1>
+    <!-- Campo de pesquisa fixo no canto superior esquerdo -->
+    <div class="search-container">
+        <h2>Buscar Rota do Ônibus</h2>
+        <form id="pesquisaForm">
+            <input type="text" id="nomeOnibus" placeholder="Digite o nome do ônibus..." required>
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+    <!-- Mapa interativo -->
     <div id="map"></div>
 
+    <!-- Botão para voltar ao login -->
+    <button onclick="window.location.href='login.html'" class="back-btn">Voltar ao Login</button>
+
+    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="scripts.js"></script>
-    <script>
-        if (!localStorage.getItem("token")) {
-            window.location.href = "login.html"; // Redireciona para login se não estiver autenticado
-        }
-    </script>
-    
+    <!-- Script do mapa -->
+    <script src="index.js"></script>
 </body>
 </html>

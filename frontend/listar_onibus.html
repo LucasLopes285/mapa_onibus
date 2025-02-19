@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Ônibus</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Lista de Ônibus</h1>
+
+        <!-- Tabela para listar os ônibus -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome do Ônibus</th>
+                        <th>Rota Associada</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaOnibus">
+                    <!-- As linhas da tabela serão inseridas aqui via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Botão para voltar ao painel administrativo -->
+        <button onclick="window.location.href='admin.html'" class="back-btn">Voltar ao Painel Administrativo</button>
+    </div>
+
+    <script src="listar_onibus.js"></script>
+</body>
+</html>

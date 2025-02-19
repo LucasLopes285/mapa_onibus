@@ -1,9 +1,16 @@
+/* ===================== */
 /* Reset básico */
+/* ===================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+/* ===================== */
+/* Corpo das Páginas */
+/* ===================== */
 
 body {
     font-family: Arial, sans-serif;
@@ -13,6 +20,72 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+}
+
+/* ===================== */
+/* Formulários (Login e Cadastro) */
+/* ===================== */
+
+.form-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.form-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 15px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 /* ===================== */
@@ -27,12 +100,6 @@ body {
     width: 90%;
     max-width: 400px;
     text-align: center;
-}
-
-.admin-container h1 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
 }
 
 .admin-options {
@@ -58,7 +125,6 @@ body {
 }
 
 .logout-btn {
-    display: inline-block;
     margin-top: 20px;
     padding: 12px 20px;
     font-size: 1rem;
@@ -74,56 +140,141 @@ body {
     background-color: #ff0000;
 }
 
-/* ================= */
-/* Cadastro de Rotas */
-/* ================= */
+/* ===================== */
+/* Página do Cadastro de Rotas */
+/* ===================== */
 
-.cadastro-container {
-    background-color: #ffffff;
-    padding: 20px;
+/* Container do campo de cadastro */
+.search-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
 }
 
-.cadastro-container h1 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+.search-container h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-label {
-    font-weight: bold;
-}
-
-input[type="text"] {
+.search-container input {
+    width: 100%;
     padding: 10px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
 }
 
-/* Botões */
-button {
+.search-container button {
+    width: 100%;
     padding: 10px;
-    font-size: 1rem;
-    color: white;
     background-color: #007bff;
+    color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-button:hover {
+.search-container button:hover {
     background-color: #0056b3;
+}
+
+/* Estilo do mapa */
+#map {
+    height: 80vh;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Botão voltar ao painel administrativo */
+.back-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #5a6268;
+}
+
+
+/* ===================== */
+/* Tabela de Ônibus */
+/* ===================== */
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+button {
+    padding: 8px 12px;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 5px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button.edit-btn {
+    background-color: #007bff;
+}
+
+button.delete-btn {
+    background-color: #ff4d4d;
+}
+
+button.delete-btn:hover {
+    background-color: #ff0000;
 }
 
 .back-btn {
@@ -135,10 +286,77 @@ button:hover {
     background-color: #5a6268;
 }
 
-/* Mapa */
+/* ===================== */
+/* Página do Mapa Interativo */
+/* ===================== */
+
+/* Container do campo de pesquisa */
+.search-container {
+    position: absolute;
+    top: 65px;
+    left: 20px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.search-container h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.search-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo do mapa */
 #map {
-    height: 400px;
-    margin-bottom: 20px;
+    height: 80vh; /* Mapa ocupa 80% da altura da tela */
+    width: 50%; /* Mapa ocupa 90% da largura da tela */
+    margin: 0 auto;
     border-radius: 8px;
     border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Botão voltar ao login */
+.back-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #5a6268;
 }
