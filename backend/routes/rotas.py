@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from backend.database import get_db
-from backend.models import Rota
+from backend.models import Rota, Usuario, Onibus
 from backend.schemas import RotaSchema
 from backend.security import verificar_admin  # 🔹 Agora garantimos que apenas administradores podem fazer alterações
 
@@ -20,14 +20,39 @@ def buscar_rota_por_nome(rota_nome: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Rota não encontrada")
     return rota
 
+@router.get("/rotas/{rota_id}", response_model=RotaSchema)
+def buscar_rota_por_id(rota_id: int, db: Session = Depends(get_db)):
+    rota = db.query(Rota).filter(Rota.id == rota_id).first()
+    if not rota:
+        raise HTTPException(status_code=404, detail="Rota não encontrada")
+    return rota
+
+
 # 🔹 Criar uma nova rota (somente administradores)
 @router.post("/rotas", response_model=RotaSchema)
-def criar_rota(rota: RotaSchema, db: Session = Depends(get_db), usuario=Depends(verificar_admin)):
-    nova_rota = Rota(nome=rota.nome, pontos=[{"lat": p.lat, "lng": p.lng} for p in rota.pontos])
+def criar_rota(rota: RotaSchema, db: Session = Depends(get_db), usuario: Usuario = Depends(verificar_admin)):
+    if not rota.nome.strip():
+        raise HTTPException(status_code=400, detail="O nome da rota não pode estar vazio.")
+    
+    # 🚀 Garantindo que os dados já são JSON e formatando corretamente
+    try:
+        pontos_json = [ponto.dict() for ponto in rota.pontos]
+    except AttributeError:
+        pontos_json = rota.pontos  # Se já estiver em JSON, usa diret
+
+    # Criar a nova rota
+    nova_rota = Rota(nome=rota.nome, pontos=pontos_json)
     db.add(nova_rota)
     db.commit()
     db.refresh(nova_rota)
+
+    # Criar o ônibus associado à rota
+    novo_onibus = Onibus(nome=rota.nome, rota_id=nova_rota.id, paradas=[])  # Lista vazia de paradas
+    db.add(novo_onibus)
+    db.commit()
+
     return nova_rota
+
 
 # 🔹 Atualizar uma rota existente (somente administradores)
 @router.put("/rotas/{rota_id}", response_model=RotaSchema)

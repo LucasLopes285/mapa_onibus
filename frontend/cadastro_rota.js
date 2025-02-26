@@ -49,7 +49,21 @@ document.getElementById("rotaForm").addEventListener("submit", async function (e
     }
 
     // Obter as coordenadas da rota desenhada
-    const rotaCoords = drawnItems.getLayers()[0].getLatLngs()[0].map(coord => ({
+    const layer = drawnItems.getLayers()[0]; // Obtém a camada desenhada
+
+    // Verifica se a camada é uma linha (rota)
+    if (!layer.getLatLngs) {
+        alert("Desenhe uma linha para salvar a rota!");
+        return;
+    }
+
+    const latLngs = layer.getLatLngs(); // Pega as coordenadas da linha
+
+    // Se for um array dentro de outro, pega o primeiro array interno
+    const rotaCoords = Array.isArray(latLngs[0]) ? latLngs[0].map(coord => ({
+        lat: coord.lat,
+        lng: coord.lng
+    })) : latLngs.map(coord => ({
         lat: coord.lat,
         lng: coord.lng
     }));
@@ -62,6 +76,13 @@ document.getElementById("rotaForm").addEventListener("submit", async function (e
         window.location.href = "login.html";
         return;
     }
+
+    // ✅ Adicionar console.log() para verificar os dados que estão sendo enviados ao backend
+    console.log("Token utilizado:", token);
+    console.log("Dados enviados para a API:", JSON.stringify({
+        nome: nomeOnibus,
+        pontos: rotaCoords
+    }));
 
     // Enviar a rota para o backend
     try {
@@ -77,12 +98,14 @@ document.getElementById("rotaForm").addEventListener("submit", async function (e
             })
         });
 
+        const responseData = await response.json();
+        
         if (response.ok) {
             alert("Rota cadastrada com sucesso!");
             window.location.href = "admin.html";
         } else {
-            const errorData = await response.json();
-            alert(errorData.detail || "Erro ao cadastrar a rota.");
+            console.error("Erro no backend:", responseData);
+            alert(responseData.detail || "Erro ao cadastrar a rota.");
         }
     } catch (error) {
         console.error("Erro ao conectar com o servidor:", error);

@@ -10,7 +10,7 @@ class Coordenada(BaseModel):
 class RotaSchema(BaseModel):
     id: Optional[int] = None
     nome: str
-    pontos: List[Coordenada]  # 🔹 Lista de coordenadas representando o trajeto
+    pontos: List[dict]  # 🔹 Lista de coordenadas representando o trajeto
 
     class Config:
         orm_mode = True
