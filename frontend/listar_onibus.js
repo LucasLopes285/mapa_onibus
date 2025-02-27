@@ -34,8 +34,10 @@ async function carregarOnibus() {
                 <td>${o.nome}</td>
                 <td>${o.rota_id}</td>
                 <td>
-                    <button onclick="editarOnibus(${o.id})">Editar</button>
-                    <button onclick="excluirOnibus(${o.id})">Excluir</button>
+                    <div class="acao-btns"> 
+                        <button class="edit-btn" onclick="editarRota(${o.rota_id})">Editar Rota</button>
+                        <button class="delete-btn" onclick="excluirOnibus(${o.id})">Excluir</button>
+                    </div>
                 </td>
             `;
             tabelaOnibus.appendChild(row);
@@ -46,9 +48,13 @@ async function carregarOnibus() {
     }
 }
 
-// Função para redirecionar para a página de edição do ônibus
-function editarOnibus(onibusId) {
-    window.location.href = `editar_onibus.html?id=${onibusId}`;
+// Função para redirecionar para a página de edição da rota
+function editarRota(rotaId) {
+    if (!rotaId) {
+        alert("Esse ônibus não tem uma rota associada!");
+        return;
+    }
+    window.location.href = `editar_rota.html?id=${rotaId}`;
 }
 
 // Função para excluir um ônibus

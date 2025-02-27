@@ -20,4 +20,4 @@ app.add_middleware(
 app.include_router(rotas_router, prefix="/api", tags=["Rotas"])
 app.include_router(paradas_router, prefix="/api", tags=["Paradas"])
 app.include_router(usuarios_router, prefix="/api", tags=["Usuários"])
-app.include_router(onibus_router, prefix="/api", tags=["Ônibus"])  # Se houver
+app.include_router(onibus_router, prefix="/api", tags=["Ônibus"])  

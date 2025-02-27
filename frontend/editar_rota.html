@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Rota</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Formulário fixo no canto superior esquerdo -->
+    <div class="search-container">
+        <h2>Editar Rota</h2>
+        <form id="rotaForm">
+            <label for="nomeOnibus">Nome do Ônibus:</label>
+            <input type="text" id="nomeOnibus" placeholder="Digite o nome do ônibus..." required>
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+
+    <!-- Mapa interativo -->
+    <div id="map"></div>
+
+    <!-- Botão para voltar ao painel administrativo -->
+    <button onclick="window.location.href='admin.html'" class="back-btn">Voltar ao Painel Administrativo</button>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+
+    <!-- Script para editar a rota -->
+    <script src="editar_rota.js"></script>
+</body>
+</html>
